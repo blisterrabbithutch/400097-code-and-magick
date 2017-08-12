@@ -15,16 +15,3 @@ var fireballSize = 22;
   var getWizardHeight = function(wizardWidth) {
     return wizardWidth * 1.337;
   }
-  // var getWizardX = function(width) {
-
-  // }
-  // var getWizardY = function(width) {
-  	
-  // }
-
-
-//   var buySomeBread = function(eggs) {
-//   return eggs ? 10 : 1;
-// };
-
-// console.log(buySomeBread(true));
