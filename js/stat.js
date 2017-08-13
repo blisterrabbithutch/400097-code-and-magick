@@ -43,7 +43,7 @@ window.renderStatistics = function (ctx, names, times) {
   
   ctx.textBaseline = 'top'; // положение надписи от левого верхнего угла
   for(var i = 0; i < times.length; i++) {
-    if (names[i] == names[1]) {
+    if (names[i] == names[2]) {
       ctx.fillStyle="#FF0000";
     } else {
       ctx.fillStyle="blue";
