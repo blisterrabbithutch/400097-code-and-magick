@@ -1,6 +1,6 @@
 'use strict';
 
-window.renderStatistics = function(ctx, names, times) {
+window.renderStatistics = function (ctx, names, times) {
 
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7)'; // black;
   ctx.strokeRect(110, 20, 520, 280);
@@ -21,37 +21,27 @@ window.renderStatistics = function(ctx, names, times) {
       maxIndex = i;
     }
   }
-  // getMaxArrayElement = function(maxIndex) {
-  // 	return names[maxIndex];
-  //   console.log(getMaxArrayElement);
-  // }
-  // console.log(getMaxArrayElement()); 
   var histogramWidth = 40; // px;
   var histogramHeight = 140; // px;
   var step = histogramHeight / (max - 0); // px;
-  // var playerHistogramColor = rgba(255, 0, 0, 1);
-  // var arrayHistogramColor = rgba(0, 0, 255, Math.random());
   ctx.fillText('Худшее время: ' + max.toFixed(2) + 'мс у игрока ' + names[maxIndex], 120, 80);
-  var barHeigth = 150; // px; 
   var indent = 80; // px; было 50;
   var initialX = 120; // px;
   var initialY = 250; // px;
-  var randomColorSaturation = Math.random();
-  // почему возвращает черный цвет??
-  var getRandomBlueColor = function(randomColorSaturation) {
-    return rgba(0, 0, 255, randomColorSaturation);
+  var getRandomBlueColor = function () {
+    return 'rgba(0, 0, 255, ' + Math.random() + ')';
   };
   ctx.textBaseline = 'top'; // положение надписи от левого верхнего угла
-  var getHistorgamAndName = function (initialX, initialY, histogramWidth, step, indent) {
-    for (var i = 0; i < times.length; i++) {
-      if (names[i] === 'Вы') {
+  var getHistorgamAndName = function (initialXHistogram, initialYHistogram, histogramWidthHistogram, stepHistogram, indentHistogram) {
+    for (var j = 0; j < times.length; j++) {
+      if (names[j] === 'Вы') {
         ctx.fillStyle = '#FF0000';
       } else {
-        // ctx.fillStyle=histogramBlueColor();
-        ctx.fillStyle = 'getRandomBlueColor()';
+        ctx.fillStyle = getRandomBlueColor();
       }
-      ctx.fillRect(initialX + indent * i, initialY, histogramWidth, times[i] * (-step));
-      ctx.fillText(names[i], initialX + indent * i, initialY + 10);
+      ctx.fillRect(initialXHistogram + indentHistogram * j, initialYHistogram, histogramWidthHistogram, times[j] * (-stepHistogram));
+      ctx.fillStyle = 'black';
+      ctx.fillText(names[j], initialXHistogram + indentHistogram * j, initialYHistogram + 10);
     }
   };
   getHistorgamAndName(initialX, initialY, histogramWidth, step, indent);
